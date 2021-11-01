@@ -1,0 +1,60 @@
+#!/bin/bash
+############################################################
+# Help                                                     #
+############################################################
+Help()
+{
+   # Display Help
+   echo "Add description of the script functions here."
+   echo
+   echo "Syntax: scriptTemplate [-h|n|r|s|t]"
+   echo "options:"
+   echo "r     Gets replicas."
+   echo "h     Print this Help."
+   echo "n     Gets name."
+   echo "s     Gets surname."
+   echo "t     Gets title."
+   echo
+}
+
+NAME="Name"
+SURNAME="Surname"
+TITLE="Title"
+REPLICAS=1
+
+############################################################
+############################################################
+# Main program                                             #
+############################################################
+############################################################
+############################################################
+# Process the input options. Add options as needed.        #
+############################################################
+# Get the options
+while getopts ":h:n:s:r:t:" option; do
+   case $option in
+      h) # display Help
+         Help
+         exit;;
+      n)
+         NAME=$OPTARG;;
+      s)
+         SURNAME=$OPTARG;;
+      r)
+         REPLICAS=$OPTARG;;
+      t)
+         TITLE=$OPTARG;;
+   esac
+done
+
+cat << EOF
+apiVersion: "crd.kloia.com/v1alpha1"
+kind: "Kloian"
+metadata:
+  name: "kloian"
+spec:
+  replicas: $REPLICAS
+  name: $NAME
+  surname: $SURNAME
+  title: $TITLE
+EOF | kubectl apply -f -

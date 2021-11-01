@@ -1,0 +1,10 @@
+
+apiVersion: "muhammed.crd.com/v1alpha1"
+kind: "Muhammed"
+metadata:
+  name: "muhammed.kaya"
+spec:
+  replicas: 1
+  name: Muhammed
+  surname: Kaya
+  title: "Platform Engineer"
