@@ -15,8 +15,8 @@ spec:
   restartPolicy: OnFailure
   containers:
     - name: warden
-      image: sipirsipirmin/warden:v7
-      imagePullPolicy: Never
+      image: muhammedsaidkaya/warden:v1
+      imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
 kind: Service
