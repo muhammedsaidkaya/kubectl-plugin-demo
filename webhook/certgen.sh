@@ -1,4 +1,5 @@
 keydir="certs"
+mkdir -p $keydir
 cd "$keydir"
 
 openssl genrsa -out ca.key 2048
